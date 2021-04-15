@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ColorButtonComponent } from './color-button/color-button.component';
+import { ColorsComponent } from './colors/colors.component';
 
 
 
@@ -25,6 +26,7 @@ import { ColorButtonComponent } from './color-button/color-button.component';
     HomeComponent,
     AboutComponent,
     ColorButtonComponent,
+    ColorsComponent,
   ],
   imports: [
     BrowserModule,
