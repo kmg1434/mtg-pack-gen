@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       // Convert String obect to JSON
       this.stringJson = JSON.stringify(this.cards);
       console.log("String json object :", this.stringJson);
-      console.log("Type :", typeof this.stringJson);
+      // console.log("Type :", typeof this.stringJson);
   
       // ConvertjSON to an object
       this.stringObject = JSON.parse(this.stringJson);
