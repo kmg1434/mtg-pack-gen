@@ -1,1 +1,28 @@
-<p>home works!</p>
+<div style="padding: 13px;">
+    <mat-spinner *ngIf="cards.length === 0"></mat-spinner>
+
+    <mat-card *ngFor="let card of stringObject" style="margin:11px; width: 50%">
+        <mat-card-header>
+            <mat-card-title>
+                {{card.name}}
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{card.type}}
+            </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-image style="padding: 13px;">
+            <img style="height:50%; width: 50%;" src="{{ card.imageUrl }}" />
+        </mat-card-image>
+        <mat-card-content style="">
+            <p>
+                Color Identity: {{card.colorIdentity}}
+            </p>
+            <div>
+                {{card.text}}
+            </div>
+        </mat-card-content>
+        <!-- <mat-card-actions>
+            <button mat-button> Buy product lol</button>
+        </mat-card-actions> -->
+    </mat-card>
+</div>
