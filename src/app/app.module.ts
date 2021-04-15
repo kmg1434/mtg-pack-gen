@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ColorButtonComponent } from './color-button/color-button.component';
 
 
 
@@ -22,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     HomeComponent,
     AboutComponent,
+    ColorButtonComponent,
   ],
   imports: [
     BrowserModule,

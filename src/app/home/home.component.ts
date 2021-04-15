@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
 
-    this.dataService.sendGetRequest().subscribe((data: any[])=>{
+    this.dataService.getAllCards().subscribe((data: any[])=>{
       console.log(data)
 
       // Add safe, URL encoded_page parameter 

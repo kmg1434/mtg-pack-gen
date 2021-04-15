@@ -7,7 +7,10 @@
                 {{card.name}}
             </mat-card-title>
             <mat-card-subtitle>
-                {{card.type}}
+                {{card.type}} 
+            </mat-card-subtitle>
+            <mat-card-subtitle> 
+              --  {{card.rarity}}
             </mat-card-subtitle>
         </mat-card-header>
         <mat-card-image style="padding: 13px;">
@@ -17,6 +20,9 @@
             <p>
                 Color Identity: {{card.colorIdentity}}
             </p>
+            <div>
+                Set: {{card.set}}
+            </div>
             <div>
                 {{card.text}}
             </div>
