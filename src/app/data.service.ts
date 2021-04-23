@@ -20,6 +20,8 @@ export class DataService {
   private REST_API_SERVER = "https://api.magicthegathering.io/v1";
   private LEGAL_SETS = "set=ALA,RTR,GTC,KTK"; // defined by Mark, expansions will need to be added here
   public colorIdentity = "colorIdentity=B";
+  public colorIdentityObj = []; 
+
   public rareRarity = "rarity=rare,mythic";
   public uncomonRarity = "rarity=uncommon";
   public commonRarity = "rarity=common";
@@ -33,7 +35,7 @@ export class DataService {
   public pageSize = "pageSize=1";
   public pageParams = `${this.page}&${this.pageSize}`;
 
-  private getAllQueryParamString = `?${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&${this.pageParams}`;
+  private getAllQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&${this.pageParams}`;
 
   constructor(private httpClient: HttpClient) { }
 
