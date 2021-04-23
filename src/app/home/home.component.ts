@@ -26,21 +26,21 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.dataService.getAllCards().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
-      console.log(data)
+    // this.dataService.getAllCards().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
+    //   console.log(data)
 
-      // Add safe, URL encoded_page parameter 
-      // const options = { params: new HttpParams({fromString: "_page=1&_limit=20"}) };
+    //   // Add safe, URL encoded_page parameter 
+    //   // const options = { params: new HttpParams({fromString: "_page=1&_limit=20"}) };
 
-      this.cards = data['cards'];
+    //   this.cards = data['cards'];
       
-      // Convert String obect to JSON
-      this.stringJson = JSON.stringify(this.cards);
-      // ConvertjSON to an object (that's compatable with *ngFor)
-      this.stringObject = JSON.parse(this.stringJson);
-      console.log("JSON object -", this.stringObject);
+    //   // Convert String obect to JSON
+    //   this.stringJson = JSON.stringify(this.cards);
+    //   // ConvertjSON to an object (that's compatable with *ngFor)
+    //   this.stringObject = JSON.parse(this.stringJson);
+    //   console.log("JSON object -", this.stringObject);
 
-    })  
+    // })  
 
   }
 

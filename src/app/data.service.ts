@@ -23,7 +23,7 @@ export class DataService {
   public colorIdentityObj = []; 
 
   public rareRarity = "rarity=rare,mythic";
-  public uncomonRarity = "rarity=uncommon";
+  public uncommonRarity = "rarity=uncommon";
   public commonRarity = "rarity=common";
 
   // amount of card rarities per booster pack
@@ -34,8 +34,6 @@ export class DataService {
   public page = "page=1";
   public pageSize = "pageSize=1";
   public pageParams = `${this.page}&${this.pageSize}`;
-
-  private getAllQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&${this.pageParams}`;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -52,17 +50,30 @@ export class DataService {
     return throwError(errorMessage);
   }
 
-  public getAllCards(){
+  // 1/8th of the time is mythic
+  private getRareQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&${this.pageParams}`;
+  public getRareCard(){
     // Add safe, URL encoded_page parameter 
     const options = { params: new HttpParams({fromString: "page=1&pageSize=20"}) };
 
-    return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getAllQueryParamString }`)
+    return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getRareQueryParamString }`)
                           .pipe(retry(3), catchError(this.handleError));
   }
 
   private getCommonQueryParamString = `?${this.LEGAL_SETS}&${this.colorIdentity}&${this.commonRarity}&${this.pageParams}`
 
   public getCommonCard(){
+    return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getCommonQueryParamString }`)
+    .pipe(retry(3), catchError(this.handleError));
+  }
+
+  private getUncommonQueryParamString = `?${this.LEGAL_SETS}&${this.colorIdentity}&${this.uncommonRarity}&${this.pageParams}`
+  public getUncommonCard(){
+    return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getUncommonQueryParamString }`)
+    .pipe(retry(3), catchError(this.handleError));
+  }
+
+  public getLandCard() {
     return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getCommonQueryParamString }`)
     .pipe(retry(3), catchError(this.handleError));
   }

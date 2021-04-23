@@ -11,11 +11,11 @@ export interface Card {
 }
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.sass']
+  selector: 'app-common-card',
+  templateUrl: './common-card.component.html',
+  styleUrls: ['./common-card.component.sass']
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class CommonCardComponent implements OnInit, OnDestroy {
 
   cards = [];
   stringJson: any;

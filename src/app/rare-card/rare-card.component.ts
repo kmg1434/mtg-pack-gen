@@ -11,11 +11,11 @@ export interface Card {
 }
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.sass']
+  selector: 'app-rare-card',
+  templateUrl: './rare-card.component.html',
+  styleUrls: ['./rare-card.component.sass']
 })
-export class CardComponent implements OnInit, OnDestroy {
+export class RareCardComponent implements OnInit, OnDestroy {
 
   cards = [];
   stringJson: any;
@@ -26,7 +26,7 @@ export class CardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.dataService.getCommonCard().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
+    this.dataService.getRareCard().pipe(takeUntil(this.destroy$)).subscribe((data: any[])=>{
       console.log(data)
 
       // Add safe, URL encoded_page parameter 

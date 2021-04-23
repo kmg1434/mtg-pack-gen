@@ -17,6 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ColorButtonComponent } from './color-button/color-button.component';
 import { ColorsComponent } from './colors/colors.component';
 import { CardComponent } from './card/card.component';
+import { RareCardComponent } from './rare-card/rare-card.component';
+import { UncommonCardComponent } from './uncommon-card/uncommon-card.component';
+import { CommonCardComponent } from './common-card/common-card.component';
+import { LandCardComponent } from './land-card/land-card.component';
 
 
 @NgModule({
@@ -27,6 +31,10 @@ import { CardComponent } from './card/card.component';
     ColorButtonComponent,
     ColorsComponent,
     CardComponent,
+    RareCardComponent,
+    UncommonCardComponent,
+    CommonCardComponent,
+    LandCardComponent,
   ],
   imports: [
     BrowserModule,
