@@ -16,8 +16,7 @@ import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ColorButtonComponent } from './color-button/color-button.component';
 import { ColorsComponent } from './colors/colors.component';
-
-
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -27,6 +26,7 @@ import { ColorsComponent } from './colors/colors.component';
     AboutComponent,
     ColorButtonComponent,
     ColorsComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
