@@ -11,15 +11,9 @@ import { $ } from 'protractor';
 })
 export class DataService {
 
-  // Pagination
-  public first: string = "";
-  public prev: string = "";
-  public next: string = "";
-  public last: string = "";
-
   private REST_API_SERVER = "https://api.magicthegathering.io/v1";
   private LEGAL_SETS = "set=ALA,RTR,GTC,KTK"; // defined by Mark, expansions will need to be added here
-  public colorIdentity = "colorIdentity=B";
+  public colorIdentity = "colorIdentity=U,B,R";
   public colorIdentityObj = []; 
 
   public rareRarity = "rarity=rare,mythic";
@@ -51,53 +45,23 @@ export class DataService {
   }
 
   // 1/8th of the time is mythic
-  private getRareQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&${this.pageParams}`;
+  private getRareQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&page=1&pageSize=1`;
   public getRareCard(){
-    // Add safe, URL encoded_page parameter 
-    const options = { params: new HttpParams({fromString: "page=1&pageSize=20"}) };
-
     return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getRareQueryParamString }`)
                           .pipe(retry(3), catchError(this.handleError));
   }
 
-  private getCommonQueryParamString = `?${this.LEGAL_SETS}&${this.colorIdentity}&${this.commonRarity}&${this.pageParams}`
+  private getCommonQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.commonRarity}&&page=1&pageSize=10`
 
   public getCommonCard(){
     return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getCommonQueryParamString }`)
     .pipe(retry(3), catchError(this.handleError));
   }
 
-  private getUncommonQueryParamString = `?${this.LEGAL_SETS}&${this.colorIdentity}&${this.uncommonRarity}&${this.pageParams}`
+  private getUncommonQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.uncommonRarity}&&page=1&pageSize=3`
   public getUncommonCard(){
     return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getUncommonQueryParamString }`)
     .pipe(retry(3), catchError(this.handleError));
-  }
-
-  public getLandCard() {
-    return this.httpClient.get(`${ this.REST_API_SERVER }/cards/${ this.getCommonQueryParamString }`)
-    .pipe(retry(3), catchError(this.handleError));
-  }
-
-  // pagination parse function
-  parseLinkHeader(header) {
-    if (header.length == 0) {
-      return ;
-    }
-
-    let parts = header.split(',');
-    var links = {};
-    parts.forEach( p => {
-      let section = p.split(';');
-      var url = section[0].replace(/<(.*)>/, '$1').trim();
-      var name = section[1].replace(/rel="(.*)"/, '$1').trim();
-      links[name] = url;
-
-    });
-
-    this.first  = links["first"];
-    this.last   = links["last"];
-    this.prev   = links["prev"];
-    this.next   = links["next"]; 
   }
 
 }

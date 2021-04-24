@@ -20,8 +20,6 @@ import { CardComponent } from './card/card.component';
 import { RareCardComponent } from './rare-card/rare-card.component';
 import { UncommonCardComponent } from './uncommon-card/uncommon-card.component';
 import { CommonCardComponent } from './common-card/common-card.component';
-import { LandCardComponent } from './land-card/land-card.component';
-
 
 @NgModule({
   declarations: [
@@ -34,7 +32,6 @@ import { LandCardComponent } from './land-card/land-card.component';
     RareCardComponent,
     UncommonCardComponent,
     CommonCardComponent,
-    LandCardComponent,
   ],
   imports: [
     BrowserModule,
