@@ -11,7 +11,7 @@ import { $ } from 'protractor';
 })
 export class DataService {
 
-  private MTG_API_URL = "https://api.magicthegathering.io/v1";
+  private SCRYFALL_API_URL = "https://api.scryfall.com";
   private LEGAL_SETS = "set=ALA,RTR,GTC,KTK"; // defined by Mark, expansions will need to be added here
   public colorIdentity = "colorIdentity=U,B,R";
   public colorIdentityObj = []; 
@@ -47,20 +47,20 @@ export class DataService {
   // 1/8th of the time is mythic (0.125)
   private getRareQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.rareRarity}&page=1&pageSize=1`;
   public getRareCard(){
-    return this.httpClient.get(`${ this.MTG_API_URL }/cards/${ this.getRareQueryParamString }`)
+    return this.httpClient.get(`${ this.SCRYFALL_API_URL }/cards/${ this.getRareQueryParamString }`)
                           .pipe(retry(3), catchError(this.handleError));
   }
 
   private getCommonQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.commonRarity}&&page=1&pageSize=10`
 
   public getCommonCard(){
-    return this.httpClient.get(`${ this.MTG_API_URL }/cards/${ this.getCommonQueryParamString }`)
+    return this.httpClient.get(`${ this.SCRYFALL_API_URL }/cards/${ this.getCommonQueryParamString }`)
                           .pipe(retry(3), catchError(this.handleError));
   }
 
   private getUncommonQueryParamString = `?random=true&${this.LEGAL_SETS}&${this.colorIdentity}&${this.uncommonRarity}&&page=1&pageSize=3`
   public getUncommonCard(){
-    return this.httpClient.get(`${ this.MTG_API_URL }/cards/${ this.getUncommonQueryParamString }`)
+    return this.httpClient.get(`${ this.SCRYFALL_API_URL }/cards/${ this.getUncommonQueryParamString }`)
                           .pipe(retry(3), catchError(this.handleError));
   }
 
